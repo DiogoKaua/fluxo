@@ -42,7 +42,7 @@ Route::prefix('lancamento')
  * |lancamento   |
  * ----------------------
  */
-Route::prefix('la')
+Route::prefix('centro-custo')
 ->controller(CentroCustoController::class)->middleware('auth')
 ->group(
     function(){

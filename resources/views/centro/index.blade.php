@@ -1,5 +1,10 @@
 @extends('layouts.base')
 @section('content')
+<h1>
+     <i class="bi bi-list-check">
+        Centro de Custo
+     </i>
+</h1>
     <h1>INDEX - lancamentos </h1>
     <h2>{{ Auth::user()->name}}</h2>
 
@@ -12,12 +17,13 @@
             <thead>
                 <caption>LISTA DE</caption>
                 <tr>
-                    <th>#</th>
-                    <th>Column 2</th>
-                    <th>Column 3</th>
+                    <th class="col-2">#</th>
+                    <th>Centro de Custo</th>
+                    <th>Total de lancamento</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
+                @foreach ( $centroCustos as $centro )         
                 <tr>
                     <td scope="row" class="col-1">
                         <div class="flex-column">
@@ -36,9 +42,14 @@
                             </button>
                         </div>
                     </td>
-                    <td>Item</td>
-                    <td>Item</td>
+                    <td>
+                        {{$centro->centro_custo}};
+                    </td>
+                    <td>
+                        {{ $centro->lancamentos()->count() }};
+                    </td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
