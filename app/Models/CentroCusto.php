@@ -14,14 +14,14 @@ class CentroCusto extends Model
     use HasFactory;
 
     protected $table = 'centro_custos';
-    protected $primaryKery = 'centro_custos';
+    protected $primaryKey = 'id_centro_custo';
     protected $daete = [
         'created_at',
         'updated_at',
         'deleted_at'
     ];
     protected $fillable =[
-        'centro_custos'
+        'centro_custo'
     ];
     /**
      * --------------------------------
@@ -30,6 +30,6 @@ class CentroCusto extends Model
      */
 
      public function lancamentos(){
-        return $this->belongsTo(lancamentos::class, 'centro_custos', 'centro_custos');
+        return $this->belongsTo(Lancamento::class, 'id_centro_custo', 'id_centro_custo');
      }
 }

@@ -7,6 +7,13 @@
 </h1>
     <h1>INDEX - lancamentos </h1>
     <h2>{{ Auth::user()->name}}</h2>
+    <h1>
+        <i>
+            Centro de Custo - <a class="btn btn-primary"
+            href="{{ route("centro.create")}}">Novo centro de custo</a>
+        </i>
+        
+    </h1>
 
     {{-- alerts --}}
     @include('layouts.partials.alerts')
@@ -28,16 +35,20 @@
                     <td scope="row" class="col-1">
                         <div class="flex-column">
                             {{-- ver --}}
-                            <a class="btn btn-success" href="#">
+                            <a class="btn btn-success" href="{{route('centro.show', ['id' =>$centro->id_centro_custo])}}">
                                 <i class="bi bi-eye"></i>
                             </a>
                             {{-- editar --}}
-                            <a class="btn btn-dark" href="#">
+                            <a class="btn btn-dark"  
+                            href="{{ route('centro.edit',['id' => $centro->id_centro_custo]
+                                )}}">
                                 <i class="bi bi-pencil-square"></i>
                             </a>
                             {{-- excluir --}}
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#modalExcluir" data-identificacao="" data-url="">
+                                data-bs-target="#modalExcluir" 
+                                data-identificacao="{{ $centro->centro_custo }}" 
+                                data-url="{{route('centro.destroy', ['id' => $centro->id_centro_custo])}}">
                                 <i class="bi bi-trash"></i>
                             </button>
                         </div>

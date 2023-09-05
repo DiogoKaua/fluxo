@@ -31,8 +31,8 @@ class CentroCustoController extends Controller
      */
     public function store(Request $request)
     {
-        $centro = CentroCusto::create($request->all());
-        return view('centro.index') 
+        CentroCusto::create($request->all());
+        return redirect()-> route('centro.index') 
         ->with('novo', 'Centro de Custo com sucesso!');
     }
 
@@ -40,10 +40,12 @@ class CentroCustoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(CentroCusto $id)
+    public function show(int $id)
     {
         $centro = CentroCusto::with([
-            'lancamentos', 'lancamentos.tipo', 'lancamentos.usuario',
+            'lancamentos',
+            'lancamentos.tipo', 
+            'lancamentos.usuario',
         ])->find($id)->paginate(10); 
 
         return view('centro.show')->with(compact('centro'));
@@ -52,9 +54,9 @@ class CentroCustoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CentroCusto $id)
+    public function edit(int $id)
     {
-        $centro = CentroCustoFactory::find($id);
+        $centro = CentroCusto::find($id);
         return view('centro.form') -> with(compact('centro'));
     }
 
