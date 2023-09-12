@@ -4,30 +4,39 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Lancamento;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Lancamento;
 
 class Tipo extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $table = 'tipos';
-    protected $primaryKery = 'id_tipo';
-    protected $daete = [
+    protected $primaryKey = 'id_tipo';
+    protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at'
     ];
-    protected $fillable =[
+
+    protected $fillable = [
         'tipo'
     ];
+
     /**
-     * --------------------------------
-     * | Relacionamentos              |
-     * | 
+     * -----------------------------
+     * | Relacionamentos
+     * |
+     * ------------------------------
      */
 
      public function lancamentos(){
-        return $this->belongsTo(lancamentos::class, 'id_tipo', 'id_tipo');
+        return $this->belongsTo(
+            Lancamento::class,
+            'id_tipo',
+            'id_tipo'
+            );
      }
+
+
 }

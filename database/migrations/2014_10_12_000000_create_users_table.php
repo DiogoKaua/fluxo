@@ -20,6 +20,13 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        \App\Models\User::create([
+            'name' => 'Thomas Melo',
+            'email' => 'thomas.cmelo@sp.senac.br',
+            'email_verified_at' => now(),
+            'password' => '$2y$10$NWv1rNyKL6c5CbCaYaTAVOJ4O6WC.fPSlcUMzfTF3zOkNkjLwXK8G', //Senac@123
+        ]);
     }
 
     /**

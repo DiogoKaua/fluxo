@@ -11,25 +11,31 @@ class CentroCusto extends Model
 {
     use HasFactory, SoftDeletes;
 
-    use HasFactory;
-
     protected $table = 'centro_custos';
     protected $primaryKey = 'id_centro_custo';
-    protected $daete = [
+    protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at'
     ];
-    protected $fillable =[
+
+    protected $fillable = [
         'centro_custo'
     ];
+
     /**
-     * --------------------------------
-     * | Relacionamentos              |
-     * | 
+     * -----------------------------
+     * | Relacionamentos
+     * |
+     * ------------------------------
      */
 
      public function lancamentos(){
-        return $this->belongsTo(Lancamento::class, 'id_centro_custo', 'id_centro_custo');
+        return $this->belongsTo(
+            Lancamento::class,
+            'id_centro_custo',
+            'id_centro_custo'
+            );
      }
+
 }
