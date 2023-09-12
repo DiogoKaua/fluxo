@@ -31,7 +31,12 @@ class LancamentoController extends Controller
      */
     public function create()
     {
-        //
+        $lancamento = null;
+        $centrosDeCusto = CentroCusto::class;
+        $tipos = Tipo::class;
+        return view('lancamento.form')->with(compact('lancamento', 'centrosDeCusto', 'tipos'));
+
+
     }
 
     /**
