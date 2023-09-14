@@ -84,7 +84,7 @@
 
                             {{-- ver --}}
 
-                            <a class="btn btn-success" href="#">
+                            <a class="btn btn-success" href="{{ url('/storage/anexos//'.$lancamento->anexo)}}" target="_blank">
 
                                 <i class="bi bi-eye"></i>
 
